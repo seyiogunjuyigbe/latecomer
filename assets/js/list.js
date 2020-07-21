@@ -144,7 +144,7 @@ const reset = ()=>{
             }
          
     var result;
-    if(found) {console.log({found});result = appendTr(found,tr="");}
+    if(found) {console.log({found});result = appendTr(found,"");}
     else result = "No employee found"
     if(!result || result.length==0) result = "No employee found"
     
