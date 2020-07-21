@@ -4,6 +4,8 @@
     let timeField = document.querySelector('#timeinp');
     let diffField = document.querySelector('#diff');    
     let lateFee = 0.02;
+    let form = document.querySelector('#employeeForm');
+
     // store new employee details to localstorage
     var currentData;
     if(localStorage.getItem('data') !== null) {
@@ -15,7 +17,6 @@
         currentData = "[]";
 
     }
-    let form = document.querySelector('#employeeForm');
     form.onsubmit = (e) =>{
         e.preventDefault();
         $('#modal').modal('show');
@@ -94,7 +95,15 @@ recordBtn.addEventListener('click', ()=>{
         $('#timeModal').modal('hide');
     }
 })
-window.addEventListener('click', ()=>{
+form.addEventListener('click', ()=>{
+    if(localStorage.getItem('startTime') == null){
+        // open modal again
+        $('#timeModal').modal('show',{
+            keyboard: false
+          });
+    }
+});
+form.addEventListener('keypress', ()=>{
     if(localStorage.getItem('startTime') == null){
         // open modal again
         $('#timeModal').modal('show',{
