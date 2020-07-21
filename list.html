@@ -58,9 +58,10 @@
          
         </tbody>
       </table>
-      <div id="pagebtns">
-        <button id="prev" data-="0" class="mr-auto btn btn-primary">Previous Page</button>
-        <button id="next" data-="1"  class="ml-auto btn btn-primary" onclick="paginate()">Next Page</button>
+      <div id="pagebtns" class="mx-auto">
+        <button id="prev" data="-1" class="btn btn-primary" onclick = "depaginate()">Previous Page</button>
+        <button id="next" data="1"  class="btn btn-primary" onclick="paginate()">Next Page</button>
+        <p id="pageno"></p>
 
       </div>
       </div>

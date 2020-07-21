@@ -1,3 +1,9 @@
+var prevBtn = document.querySelector('#prev');
+var nextBtn = document.querySelector('#next');
+var pageno = document.querySelector('#pageno');
+let prevData = Number(prevBtn.getAttribute('data'))
+let nextData = Number(nextBtn.getAttribute('data'));  
+// sort function
 const compare_qty = (a, b) =>{
         // a should come before b in the sorted order
         if(a.fee < b.fee){
@@ -18,9 +24,7 @@ const compare_qty = (a, b) =>{
     data = data.sort(compare_qty);
     return data.slice(x*10,(x*10)+10)
     }
-// var tbody = 
-var prevBtn = document.querySelector('#prev');
-var nextBtn = document.querySelector('#next');
+
 
 const appendTr = (arr,tr) =>{
         if(arr == undefined || arr.length == 0){
@@ -45,7 +49,7 @@ window.onload = () =>{
         try{
                var arr = sortAndCount(0); 
         } catch(err){
-                console.log(err.message)
+                alert(err.message)
         }
 
 var tr = ""
@@ -53,15 +57,70 @@ tr = appendTr(arr,tr);
 if(!tr || tr.length==0) tr = "No data found"
 
 document.querySelector('tbody').innerHTML = tr
-prevBtn.setAttribute('disabled',true)
+// prevBtn.setAttribute('disabled',true)
 
 }
-const paginate = (e)=>{
-console.log(this)
-  let prevData = Number(this.getAttribute('data-'))
-let nextData = Number(nextBtn.getAttribute('data-'));  
+// paginate forward
+const paginate = ()=>{
+  let prevData = Number(prevBtn.getAttribute('data'))
+let nextData = Number(nextBtn.getAttribute('data'));  
+try{
+        var arr = sortAndCount(nextData); 
+ } catch(err){
+         console.log(err.message)
+ }
+
+var tr = ""
+tr = appendTr(arr,tr);
+if(!tr || tr.length==0){ tr = "No data found"
+nextBtn.setAttribute('disabled',true)
+}
+if(tr.length<10){
+nextBtn.setAttribute('disabled',true);
+prevBtn.setAttribute('disabled',false)
 
 }
+else{
+    document.querySelector('tbody').innerHTML = tr;  
+    pageno.textcontent = "Page "
+    nextBtn.setAttribute('data',nextData+1)  
+    prevBtn.setAttribute('data',prevData+1)  
+
+}
+
+}
+
+// paginate backwards
+const depaginate = ()=>{
+
+      try{
+              var arr = sortAndCount(prevData); 
+       } catch(err){
+               console.log(err.message)
+       }
+      
+      var tr = ""
+      tr = appendTr(arr,tr);
+      if(!tr || tr.length==0){ tr = "No data found"
+      prevBtn.setAttribute('disabled',true)
+      nextBtn.setAttribute('disabled',false)
+
+      }
+      if(prevData <0){
+        prevBtn.setAttribute('disabled',true)
+      nextBtn.setAttribute('disabled',false)
+
+        }
+      else{
+          document.querySelector('tbody').innerHTML = tr;  
+          pageno.textcontent = "Page "
+          nextBtn.setAttribute('data',String(nextData-1))  
+          prevBtn.setAttribute('data',String(prevData-1))  
+          nextBtn.setAttribute('disabled',false)
+      
+      }
+      
+      }
 
 // reset
 const reset = ()=>{
@@ -95,5 +154,3 @@ var searchBtn = document.getElementById('searchBtn')
 searchBtn.addEventListener('click',()=>{
         search(document.querySelector('#searchText').value)
 });
-
-

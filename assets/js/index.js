@@ -7,14 +7,9 @@
     // store new employee details to localstorage
     var currentData;
     if(localStorage.getItem('data') !== null) {
-        if (currentData == null|| currentData == undefined || currentData == "" || currentData.length == 0){
-        localStorage.setItem('data', "[]")
-        currentData = "[]";
-
-    } else{
+        
         currentData = localStorage.getItem('data')
 
-    }
     }else{
         localStorage.setItem('data', "[]");
         currentData = "[]";
@@ -29,17 +24,26 @@
         // get time difference in minutes
         formData.diff = getTimeDiff(timeField.value);
         // calculate lateness fee
-        formData.fee = formData.diff * 0.02
+        if(formData.diff <= 0){
+            formData.fee = 0
+
+        } else{
+            (formData.fee = formData.diff * 0.02).toFixed(2)
+        }
+        
          // fetch all data
 
         let arr = JSON.parse(currentData);
         // check if eployee data exists
         var existingName = arr.find((x)=>{
-            return x.name = formData.name
+            return x.name == formData.name
         });
         if(existingName){
             arr[arr.indexOf(existingName)].diff = formData.diff;
             arr[arr.indexOf(existingName)].fee = formData.fee
+            arr[arr.indexOf(existingName)].address = formData.address
+            arr[arr.indexOf(existingName)].email = formData.email
+
         } else{
             arr.push(formData);
         }
