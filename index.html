@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latecomer App</title>
+    <meta name="description" content="Latecomer app. See how much you owe for being late to work">
+    <meta name="author" content="Seyi Ogunjuyigbe">
+    <script src="./assets/js/jquery-3.2.1.min.js"></script>
+    <script src="./assets/js/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm navbar-light bg-dark">
+    <a class="navbar-brand" href="index.html">LateComer</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse nav-right" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Record Attendance <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="list.html">Fetch List</a>
+        </li>
+      </ul>
+    <button class="btn btn-danger float-right" id="reset">Reset App</button>
+    </div>
+  </nav>
+
+<div class="container" id="form">
+        <form action="" id="employeeForm">
+        <div class="form-group">
+            <label for="">Employee Name</label>
+            <input type="text" class="form-control" name="name" id="" required>
+        </div>
+        <div class="form-group">
+            <label for="">Email Address</label>
+            <input type="email" class="form-control" name="email" id="" required>
+        </div>
+        <div class="form-group">
+            <label for="">Address</label>
+            <input type="text" class="form-control" name="address" id="" required>
+        </div>
+        <div class="form-group">
+            <label for="">Resumption Time</label>
+            <input type="time" class="form-control" name="time" id="timeinp" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Record Attendance</button>
+    </form>
+</div>
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal_title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal_title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div id="resp_text" style="padding: 1em;" class="modal-body">
+            <div id="loader" class="spinner-border text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" data-keyboard="false" id="timeModal" tabindex="-1" role="dialog" aria-labelledby="time_title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="time_title">
+            First off, what time are employees expected to resume?
+          </h5>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div id="_text" style="padding: 1em;" class="modal-body">
+          
+          <div class="form-group">
+            <input type="time" class="form-control" name="time" id="setTime" required >
+        </div>
+        <button id="record" type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="./assets/js/index.js"></script>
+</body>
+</html>

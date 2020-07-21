@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latecomer App</title>
+    <meta name="description" content="Latecomer app. See how much you owe for being late to work">
+    <meta name="author" content="Seyi Ogunjuyigbe">
+    <script src="./assets/js/jquery-3.2.1.min.js"></script>
+    <script src="./assets/js/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/js/list.js"></script>
+
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm navbar-light bg-dark">
+    <a class="navbar-brand" href="index.html">LateComer</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse nav-right" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Record Attendance <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="list.html">Fetch List</a>
+        </li>
+      </ul>
+    <button class="btn btn-danger float-right" id="reset" onclick="reset()">Reset App</button>
+
+    </div>
+  </nav>
+
+<div class="container" id="list">
+  <div id="search" class="float-right form-inline">
+    <input type="text" class="form-control" name="" placeholder="Employee name" id="searchText"> 
+    <button class="btn btn-outline-primary" id="searchBtn">Search</button>
+  </div>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Lateness Minute Count</th>
+            <th scope="col">Subcharge</th>
+
+          </tr>
+        </thead>
+        <tbody id="tbody">
+         
+        </tbody>
+      </table>
+      <div id="pagebtns">
+        <button id="prev" data-="0" class="mr-auto btn btn-primary">Previous Page</button>
+        <button id="next" data-="1"  class="ml-auto btn btn-primary" onclick="paginate()">Next Page</button>
+
+      </div>
+      </div>
+</body>
+</html>

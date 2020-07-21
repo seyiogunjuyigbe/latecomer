@@ -1,0 +1,10 @@
+#form{
+    width: 30%;
+    margin:  5% auto;
+}
+#list{
+    margin:  5% auto;
+}
+.nav-link,.navbar-brand{
+    color:#fff !important;
+}
