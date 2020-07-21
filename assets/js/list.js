@@ -37,8 +37,8 @@ tr+=`
             <td>${x.name}</td>
             <td>${x.email}</td>
             <td>${x.address}</td>
-            <td>${x.diff}</td>
-            <td>${x.fee}</td>
+            <td>${x.diff} mins</td>
+            <td>$ ${x.fee}</td>
           </tr>`
 });
 return tr;   
