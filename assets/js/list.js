@@ -106,7 +106,7 @@ const depaginate = ()=>{
       nextBtn.setAttribute('disabled',false)
 
       }
-      if(prevData <0){
+      if(prevData <0 || tr.length < 10){
         prevBtn.setAttribute('disabled',true)
       nextBtn.setAttribute('disabled',false)
 
