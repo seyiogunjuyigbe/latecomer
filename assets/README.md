@@ -1,2 +1,2 @@
-Latecomer App
-Hosted URL: https://latecomer.netlify.app/
+# Latecomer App
+# Hosted URL: https://latecomer.netlify.app/
