@@ -7,7 +7,7 @@
     // store new employee details to localstorage
     var currentData;
     if(localStorage.getItem('data') !== null) {
-        if (currentData.length == 0 || currentData == "" || currentData == null|| currentData == undefined){
+        if (currentData == null|| currentData == undefined || currentData == "" || currentData.length == 0){
         localStorage.setItem('data', "[]")
         currentData = "[]";
 

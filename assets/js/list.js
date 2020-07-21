@@ -22,13 +22,11 @@ const compare_qty = (a, b) =>{
 var prevBtn = document.querySelector('#prev');
 var nextBtn = document.querySelector('#next');
 
-
-window.onload = () =>{
-var arr = sortAndCount(0);
-console.log({arr})
-var tr = ""
 const appendTr = (arr,tr) =>{
-  arr.forEach(x=>{
+        if(arr == undefined || arr.length == 0){
+                return false
+        } else{
+              arr.forEach(x=>{
 tr+=`
         <tr>
             <th scope="row">${arr.indexOf(x)+1}</th>
@@ -39,13 +37,23 @@ tr+=`
             <td>${x.fee}</td>
           </tr>`
 });
-return tr;      
+return tr;   
+        }
+       
 }
+window.onload = () =>{
+        try{
+               var arr = sortAndCount(0); 
+        } catch(err){
+                console.log(err.message)
+        }
+
+var tr = ""
 tr = appendTr(arr,tr);
-if(tr.length==0) tr = "No data found"
+if(!tr || tr.length==0) tr = "No data found"
 
 document.querySelector('tbody').innerHTML = tr
-// prevBtn.setAttribute('disabled',true)
+prevBtn.setAttribute('disabled',true)
 
 }
 const paginate = (e)=>{
@@ -63,16 +71,29 @@ const reset = ()=>{
     }
 
 //     search
-    const search = (text)=>{
-var found = data.find((x)=>{
-        return x.name.toLowerCase().indexOf(text.toLowerCase()) !== -1
-    });
-    var result = appendTr(found,tr="");
-    if(result.length==0) result = "No employee found"
+    const search = async (text)=>{
+            if(text == undefined || text == ""){
+                alert('Please enter employee search name')
+                return false;
+            }
+            try {
+                var found = await data.filter((x)=>{
+                  return x.name.toLowerCase().indexOf(text.toLowerCase()) !== -1
+                        });  
+            } catch (error) {
+                  return false  
+            }
+         
+    var result;
+    if(found) {console.log({found});result = appendTr(found,tr="");}
+    else result = "No employee found"
+    if(!result || result.length==0) result = "No employee found"
     
     document.querySelector('tbody').innerHTML = result
     }
 var searchBtn = document.getElementById('searchBtn')
 searchBtn.addEventListener('click',()=>{
         search(document.querySelector('#searchText').value)
-})
+});
+
+
